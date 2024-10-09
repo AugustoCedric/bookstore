@@ -5,10 +5,12 @@ description = "Bookstore API"
 authors = ["AugustoCedric <cedric.pmi.rmp@gmail.com>"]
 readme = "README.md"
 
-[tool.poetry.dependencies]
+[tool.poetry.dependencies]  # Usar esta seção para dependências principais
 python = "^3.12"
 django = "^5.1.1"
 django-rest-framework = "^0.1.0"
+idna = "^3.10"
+django-extensions = "^3.2.3"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"
