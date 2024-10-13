@@ -38,16 +38,16 @@ class TestOrderViewSet(APITestCase):
 
         # Verifica se os dados da ordem retornada estão corretos
         self.assertEqual(
-            order_data["results"][0]["product"][0]["title"], self.product.title
+            order_data[0]["product"][0]["title"], self.product.title
         )
         self.assertEqual(
-            order_data["results"][0]["product"][0]["price"], self.product.price
+            order_data[0]["product"][0]["price"], self.product.price
         )
         self.assertEqual(
-            order_data["results"][0]["product"][0]["active"], self.product.active
+            order_data[0]["product"][0]["active"], self.product.active
         )
         self.assertEqual(
-            order_data["results"][0]["product"][0]["category"][0]["title"],
+            order_data[0]["product"][0]["category"][0]["title"],
             self.category.title,
         )
 

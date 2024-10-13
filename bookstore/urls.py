@@ -5,6 +5,7 @@ A lista `urlpatterns` direciona URLs para views. Para mais informações, consul
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
 """
 
+
 import debug_toolbar
 from bookstore import views
 from django.urls import include, path, re_path

@@ -36,12 +36,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_extensions",
 
+
     "order",
     "product",
     "rest_framework",
     "debug_toolbar",
     "rest_framework.authtoken",
-
 ]
 
 # Add debug toolbar only if in debug mode

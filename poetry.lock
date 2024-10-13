@@ -46,6 +46,7 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+
 name = "django-debug-toolbar"
 version = "4.4.6"
 description = "A configurable set of panels that display various debug information about the current request/response."
@@ -61,6 +62,7 @@ django = ">=4.2.9"
 sqlparse = ">=0.2"
 
 [[package]]
+
 name = "django-extensions"
 version = "3.2.3"
 description = "Extensions for Django"
@@ -135,6 +137,7 @@ python-dateutil = ">=2.4"
 typing-extensions = "*"
 
 [[package]]
+
 name = "gitdb"
 version = "4.0.11"
 description = "Git Object Database"
@@ -165,6 +168,7 @@ gitdb = ">=4.0.1,<5"
 [package.extras]
 doc = ["sphinx (==4.3.2)", "sphinx-autodoc-typehints", "sphinx-rtd-theme", "sphinxcontrib-applehelp (>=1.0.2,<=1.0.4)", "sphinxcontrib-devhelp (==1.0.2)", "sphinxcontrib-htmlhelp (>=2.0.0,<=2.0.1)", "sphinxcontrib-qthelp (==1.0.3)", "sphinxcontrib-serializinghtml (==1.1.5)"]
 test = ["coverage[toml]", "ddt (>=1.1.1,!=1.4.3)", "mock", "mypy", "pre-commit", "pytest (>=7.3.1)", "pytest-cov", "pytest-instafail", "pytest-mock", "pytest-sugar", "typing-extensions"]
+
 
 [[package]]
 name = "iniconfig"
@@ -313,6 +317,7 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
+
 
 content-hash = "9a145a59a49a4c8587c17ec9a8fb64d73ae5d3e84e3c4f5f6b9c8f102d07c9ba"
 

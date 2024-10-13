@@ -16,8 +16,10 @@ class TestProductViewSet(APITestCase):
     def setUp(self):
         # Criação de um usuário e um token de autenticação
         self.user = UserFactory()
+
         token = Token.objects.create(user=self.user)
         token.save()
+
 
         # Criação de um produto de exemplo
         self.product = ProductFactory(
@@ -26,9 +28,11 @@ class TestProductViewSet(APITestCase):
         )
 
     def test_get_all_product(self):
+
         # Definindo as credenciais do cliente para autenticação
         token = Token.objects.get(user__username=self.user.username)
         self.client.credentials(HTTP_AUTHORIZATION="Token " + token.key)
+
 
         # Realizando a requisição GET para obter todos os produtos
         response = self.client.get(reverse("product-list", kwargs={"version": "v1"}))
@@ -36,6 +40,7 @@ class TestProductViewSet(APITestCase):
         # Verificando se a resposta é 200 OK
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         product_data = json.loads(response.content)
+
 
         # Verificando se o produto retornado é o esperado
         self.assertEqual(product_data["results"][0]["title"], self.product.title)
@@ -47,7 +52,7 @@ class TestProductViewSet(APITestCase):
         token = Token.objects.get(user__username=self.user.username)
         self.client.credentials(HTTP_AUTHORIZATION="Token " + token.key)
 
-        # Criação de uma categoria para o novo produto
+
         category = CategoryFactory()
         data = json.dumps({
             "title": "notebook",
