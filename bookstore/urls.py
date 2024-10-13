@@ -16,4 +16,6 @@ urlpatterns = [
     re_path(r"^bookstore/(?P<version>(v1|v2))/", include("order.urls")),  # Rota para pedidos
     re_path(r"^bookstore/(?P<version>(v1|v2))/", include("product.urls")),  # Rota para produtos
     path("api-token-auth/", obtain_auth_token, name="api_token_auth"),
+
 ]
+
