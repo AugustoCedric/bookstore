@@ -12,6 +12,10 @@ django-rest-framework = "^0.1.0"
 idna = "^3.10"
 django-extensions = "^3.2.3"
 
+django-extensions = "^3.2.3"
+django-debug-toolbar = "^4.4.6"
+
+
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"
 factory-boy = "^3.3.1"
@@ -19,3 +23,5 @@ factory-boy = "^3.3.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
