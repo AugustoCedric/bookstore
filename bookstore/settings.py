@@ -12,21 +12,21 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-f*k@=53bc5!shef1-6w+m$-g)kspbaljz%8k4(j7iuc-u2_dyd"
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "django-insecure-#7ajm6gp(#n8_j_yvx$%qd+7$b)+1+ooqgwvr8x+vq(6@al6^n")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ebac-bookstore-api1-9d9b47b419f3.herokuapp.com', 'maiconveiga.pythonanywhere.com']
+
 
 
 # Application definition
@@ -39,12 +39,18 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_extensions",
+
+
     "order",
     "product",
     "rest_framework",
     "debug_toolbar",
     "rest_framework.authtoken",
 ]
+
+# Add debug toolbar only if in debug mode
+if DEBUG:
+    INSTALLED_APPS.append("debug_toolbar")
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -57,6 +63,9 @@ MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
+
+if DEBUG:
+    MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")
 
 ROOT_URLCONF = "bookstore.urls"
 
@@ -84,15 +93,8 @@ WSGI_APPLICATION = "bookstore.wsgi.application"
 
 DATABASES = {
     "default": {
-        # "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.postgresql"),
-        # "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "bookstore_dev_db"),
-        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
-        "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "sqlite3"),
-        "USER": os.environ.get("SQL_USER", "bookstore_dev"),
-        "PASSWORD": os.environ.get("SQL_PASSWORD", "bookstore_dev"),
-        "HOST": os.environ.get("SQL_HOST", "localhost"),
-        # "HOST": os.environ.get("SQL_HOST", "db"),
-        "PORT": os.environ.get("SQL_PORT", "5432"),
+        "ENGINE": "django.db.backends.sqlite3",  # Change to your preferred database backend in production
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
@@ -131,8 +133,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+STATIC_URL = "static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]  # Adjust as needed for your project
 
-STATIC_URL = "/static/"
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "media"  # Adjust as needed for your project
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
