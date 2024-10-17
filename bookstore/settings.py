@@ -26,7 +26,8 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "django-insecure-#7ajm6gp(#n8_j_yvx$
 DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
 
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]  # Add your domain here for production
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ebac-bookstore-api1-9d9b47b419f3.herokuapp.com', 'maiconveiga.pythonanywhere.com']
+
 
 
 
@@ -73,7 +74,9 @@ ROOT_URLCONF = "bookstore.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "bookstore", "templates")],
+
+        'DIRS': [os.path.join(BASE_DIR, 'bookstore', 'templates')],
+
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -143,8 +146,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
-
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]  # Adjust as needed for your project
 
@@ -173,7 +174,6 @@ INTERNAL_IPS = [
 ]
 
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'

@@ -1,48 +1,69 @@
-# Base python image
+# `python-base` sets up all our shared environment variables
 FROM python:3.12.1-slim as python-base
 
-# Set environment variables for Python and Poetry
+    # python
 ENV PYTHONUNBUFFERED=1 \
+    # prevents python creating .pyc files
     PYTHONDONTWRITEBYTECODE=1 \
+    \
+    # pip
     PIP_NO_CACHE_DIR=off \
     PIP_DISABLE_PIP_VERSION_CHECK=on \
     PIP_DEFAULT_TIMEOUT=100 \
+    \
+    # poetry
+    # https://python-poetry.org/docs/configuration/#using-environment-variables
+    # POETRY_VERSION=1.0.3 \--------------
+    # make poetry install to this location
     POETRY_HOME="/opt/poetry" \
+    # make poetry create the virtual environment in the project's root
+    # it gets named `.venv`
     POETRY_VIRTUALENVS_IN_PROJECT=true \
+    # do not ask any interactive question
     POETRY_NO_INTERACTION=1 \
+    \
+    # paths
+    # this is where our requirements + virtual environment will live
     PYSETUP_PATH="/opt/pysetup" \
     VENV_PATH="/opt/pysetup/.venv"
 
-# Add Poetry and venv to PATH
+
+# prepend poetry and venv to path
 ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 
-# Install dependencies
-RUN apt-get update && apt-get install --no-install-recommends -y \
+RUN apt-get update \
+    && apt-get install --no-install-recommends -y \
+        # deps for installing poetry
         curl \
+        # deps for building python deps
         build-essential \
-        git \
-        libpq-dev gcc
+        # Install git extensions
+        git
 
-# Install Poetry
-RUN pip install poetry
+# install poetry - respects $POETRY_VERSION & $POETRY_HOME
+RUN pip install poetry 
+RUN poetry init
 
-# Set working directory for project setup
+# install postgres dependencies inside of Docker
+RUN apt-get update \
+    && apt-get -y install libpq-dev gcc \
+    && pip install psycopg2
+
+# copy project requirement files here to ensure they will be cached.
 WORKDIR $PYSETUP_PATH
-
-# Copy the project dependency files
 COPY poetry.lock pyproject.toml ./
 
-# Install dependencies, replacing deprecated '--no-dev' with '--only main'
-RUN poetry install --only main
+# install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
+RUN poetry install --no-dev
 
-# Set working directory for the application
+# quicker install as runtime deps are already installed
+RUN poetry install
+
 WORKDIR /app
 
-# Copy the rest of the application code
 COPY . /app/
 
-# Expose the port for the app
 EXPOSE 8000
 
-# Set the default command to run the Django server
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
