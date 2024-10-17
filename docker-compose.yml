@@ -24,6 +24,7 @@ services:
       - ./env.dev
     networks:
       - backend
+
     depends_on:
       - db
 networks:
