@@ -22,7 +22,6 @@ class TestProductViewSet(APITestCase):
         token.save()
 
 
-        # Criação de um produto de exemplo
 
         self.product = ProductFactory(
             title="pro controller",
@@ -38,6 +37,7 @@ class TestProductViewSet(APITestCase):
 
 
         # Realizando a requisição GET para obter todos os produtos
+
         response = self.client.get(reverse("product-list", kwargs={"version": "v1"}))
 
 
@@ -46,6 +46,7 @@ class TestProductViewSet(APITestCase):
 
 
         # Verificando se o produto retornado é o esperado
+
         self.assertEqual(product_data["results"][0]["title"], self.product.title)
         self.assertEqual(product_data["results"][0]["price"], self.product.price)
         self.assertEqual(product_data["results"][0]["active"], self.product.active)
@@ -57,8 +58,9 @@ class TestProductViewSet(APITestCase):
 
         category = CategoryFactory()
         data = json.dumps(
-            {"title": "notebook", "price": 800.00,
-                "categories_id": [category.id]}
+
+            {"title": "notebook", "price": 800.00, "categories_id": [category.id]}
+
         )
 
         response = self.client.post(
