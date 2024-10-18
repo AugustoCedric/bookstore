@@ -25,7 +25,9 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "django-insecure-#7ajm6gp(#n8_j_yvx$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
 
+
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ebac-bookstore-api1-9d9b47b419f3.herokuapp.com', 'maiconveiga.pythonanywhere.com']
+
 
 
 
@@ -72,7 +74,9 @@ ROOT_URLCONF = "bookstore.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
+
         'DIRS': [os.path.join(BASE_DIR, 'bookstore', 'templates')],
+
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -93,8 +97,17 @@ WSGI_APPLICATION = "bookstore.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",  # Change to your preferred database backend in production
-        "NAME": BASE_DIR / "db.sqlite3",
+
+        # "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.postgresql"),
+        # "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "bookstore_dev_db"),
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "sqlite3"),
+        "USER": os.environ.get("SQL_USER", "bookstore_dev"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "bookstore_dev"),
+        "HOST": os.environ.get("SQL_HOST", "localhost"),
+        # "HOST": os.environ.get("SQL_HOST", "db"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
+
     }
 }
 
@@ -159,6 +172,7 @@ REST_FRAMEWORK = {
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
