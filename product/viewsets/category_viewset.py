@@ -1,3 +1,4 @@
+# product/viewsets/category_viewset.py
 from rest_framework.viewsets import ModelViewSet
 
 from product.models import Category

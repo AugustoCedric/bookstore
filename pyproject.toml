@@ -1,19 +1,23 @@
 [tool.poetry]
 name = "bookstore"
 version = "0.1.0"
-description = "Bookstore API"
+description = "API de Livraria"
 authors = ["AugustoCedric <cedric.pmi.rmp@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
 django = "^5.1.1"
-django-rest-framework = "^0.1.0"
+djangorestframework = "^3.14.0"  # Corrigido para a versão correta do Django REST Framework
+psycopg2-binary = "^2.9.10"
+django-extensions = "^3.2"
+django-debug-toolbar = "^4.0"
+gitpython = "^3.1.30"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"
-factory-boy = "^3.3.1"
+factory_boy = "^3.3.1"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
