@@ -1,24 +1,30 @@
 # Set this to ~use it everywhere in the project setup
 PYTHON_VERSION ?= 3.8.10
+# the directories containing the library modules this repo builds
 LIBRARY_DIRS = mylibrary
+# build artifacts organized in this Makefile
 BUILD_DIR ?= build
 
+# PyTest options
 PYTEST_HTML_OPTIONS = --html=$(BUILD_DIR)/report.html --self-contained-html
 PYTEST_TAP_OPTIONS = --tap-combined --tap-outdir $(BUILD_DIR)
 PYTEST_COVERAGE_OPTIONS = --cov=$(LIBRARY_DIRS)
 PYTEST_OPTIONS ?= $(PYTEST_HTML_OPTIONS) $(PYTEST_TAP_OPTIONS) $(PYTEST_COVERAGE_OPTIONS)
 
+# MyPy typechecking options
 MYPY_OPTS ?= --python-version $(basename $(PYTHON_VERSION)) --show-column-numbers --pretty --html-report $(BUILD_DIR)/mypy
+# Python installation artifacts
 PYTHON_VERSION_FILE=.python-version
-
 ifeq ($(shell which pyenv),)
+# pyenv isn't installed, guess the eventual path FWIW
 PYENV_VERSION_DIR ?= $(HOME)/.pyenv/versions/$(PYTHON_VERSION)
 else
+# pyenv is installed
 PYENV_VERSION_DIR ?= $(shell pyenv root)/versions/$(PYTHON_VERSION)
 endif
-
 PIP ?= pip3
-POETRY_OPTS ?= 
+
+POETRY_OPTS ?=
 POETRY ?= poetry $(POETRY_OPTS)
 RUN_PYPKG_BIN = $(POETRY) run
 
@@ -37,7 +43,7 @@ version-python: ## Echos the version of Python in use
 ##@ Testing
 .PHONY: test
 test: ## Runs tests
-	docker-compose exec web $(RUN_PYPKG_BIN) pytest \
+	$(RUN_PYPKG_BIN) pytest \
 		$(PYTEST_OPTIONS) \
 		tests/*.py
 
@@ -71,6 +77,7 @@ deps-brew: Brewfile ## Installs development dependencies from Homebrew
 
 .PHONY: deps-py
 deps-py: $(PYTHON_VERSION_FILE) ## Installs Python development and runtime dependencies
+<<<<<<< HEAD
 	$(PIP) install --upgrade --index-url $(PYPI_PROXY) pip
 	$(PIP) install --upgrade --index-url $(PYPI_PROXY) poetry
 	$(POETRY) install
@@ -107,6 +114,7 @@ format-isort:
 	$(RUN_PYPKG_BIN) isort --recursive .
 
 .PHONY: migrate
+<<<<<<< HEAD
 migrate: ## Run migrations
 	docker-compose exec web python manage.py migrate --noinput
 
@@ -121,3 +129,10 @@ run: ## Run the Django development server
 .PHONY: stop
 stop: ## Stop all running services
 	docker-compose down
+=======
+migrate:
+	docker-compose exec web python manage.py migrate --noinput
+
+.PHONY: seed
+seed:
+	poetry run python manage.py seed
