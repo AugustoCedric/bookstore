@@ -1,5 +1,4 @@
 name: Python Pull Request Workflow
-run-name: Python Pull Request Workflow
 on: [pull_request]
 jobs:
   qa:
