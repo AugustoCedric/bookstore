@@ -14,13 +14,13 @@ class CategoryViewSetTests(APITestCase):
     def setUp(self):
         self.category = CategoryFactory(title="books")
 
-    def test_get_all_category(self):
+    def test_get_all_categories(self):
         response = self.client.get(reverse("category-list", kwargs={"version": "v1"}))
-
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         category_data = response.json()
 
-        self.assertEqual(category_data[0]["title"], self.category.title)
+        # Verificando se a categoria retornada é a mesma que foi criada
+        self.assertEqual(category_data["results"][0]["title"], self.category.title)
 
     def test_create_category(self):
         data = {"title": "technology"}
