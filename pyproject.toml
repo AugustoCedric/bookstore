@@ -3,7 +3,7 @@ name = "bookstore"
 version = "0.1.0"
 description = "API de Livraria"
 authors = ["Augusto Cedric <cedric.pmi.rmp@gmail.com>"]
-readme = "README.md"
+readme = "README.md" 
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"  # Definindo a versão do Python suportada
