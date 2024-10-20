@@ -21,18 +21,17 @@ jobs:
       - name: View poetry --help
         run: poetry --help
 
-      - name: Install dependecies
+      - name: Install dependencies
         shell: bash
         run: python -m poetry install
 
-      - name: Yesy
+      - name: Test
         run: |
           poetry run python manage.py test
       - name: Wemake Python Stylguide
         uses: wemake-services/wemake-python-styleguide@0.16.0
         continue-on-error: true
         with:
-          reoprter: "github-pr-review"
+          reporter: "github-pr-review"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ##
