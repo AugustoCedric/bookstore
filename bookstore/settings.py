@@ -5,10 +5,15 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Configurações de segurança
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "your-default-secret-key")
-DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
+SECRET_KEY = "django-insecure-f*k@=53bc5!shef1-6w+m$-g)kspbaljz%8k4(j7iuc-u2_dyd"
+DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost").split(",")
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "ebac-bookstore-api1-9d9b47b419f3.herokuapp.com",
+    "maiconveiga.pythonanywhere.com",
+]
 
 # Definição das aplicações instaladas
 INSTALLED_APPS = [
@@ -115,6 +120,7 @@ REST_FRAMEWORK = {
     ],
 }
 
+# Configurações do Debug Toolbar
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
