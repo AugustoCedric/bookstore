@@ -13,4 +13,3 @@ class TestCategorySerializer(TestCase):
         serializer_data = self.category_serializer.data
 
         self.assertEqual(serializer_data["title"], "food")
-

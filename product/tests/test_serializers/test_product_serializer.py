@@ -21,4 +21,3 @@ class TestProductSerializer(TestCase):
         self.assertEqual(
             serializer_data["category"][0]["title"], "technology")
 
-
