@@ -17,21 +17,18 @@ ENV PYTHONUNBUFFERED=1 \
 # Adicione Poetry e venv ao PATH
 ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 
-# Adicione esta linha para instalar o Git
+# Instale pacotes necessários, incluindo o Git
 RUN apt-get update && apt-get install --no-install-recommends -y \
     curl \
     build-essential \
     git \
-    && apt-get clean
-
-# Instale o Poetry usando o novo método de instalação
-RUN curl -sSL https://install.python-poetry.org | python3 -
-
-# Instale dependências adicionais para PostgreSQL
-RUN apt-get update && apt-get install --no-install-recommends -y \
     libpq-dev \
     gcc \
     && apt-get clean
+
+# Instale o Poetry usando o novo método de instalação
+RUN curl -sSL https://install.python-poetry.org | python3 - \
+    && poetry --version  # Verifique a instalação do Poetry
 
 # Defina o diretório de trabalho e copie os arquivos de requisitos
 WORKDIR $PYSETUP_PATH
@@ -46,7 +43,7 @@ RUN pip install -r requirements.txt
 
 # Copie o código fonte da aplicação
 WORKDIR /app
-COPY . /app/
+COPY . .
 
 # Exponha a porta da aplicação
 EXPOSE 8000
