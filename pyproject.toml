@@ -2,17 +2,19 @@
 name = "bookstore"
 version = "0.1.0"
 description = "API de Livraria"
-authors = ["AugustoCedric <cedric.pmi.rmp@gmail.com>"]
+authors = ["Augusto Cedric <cedric.pmi.rmp@gmail.com>"]  # Adicione um espaço para melhor legibilidade
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
 django = "^5.1.1"
-djangorestframework = "^3.14.0"  # Corrigido para a versão correta do Django REST Framework
+djangorestframework = "^3.14.0"  # Correto para a versão compatível com Django 5.1
 psycopg2-binary = "^2.9.10"
 django-extensions = "^3.2"
 django-debug-toolbar = "^4.0"
 gitpython = "^3.1.30"
+whitenoise = "^6.2"  # ou a versão desejada
+requests = "^2.32.3"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"
