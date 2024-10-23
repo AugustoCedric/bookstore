@@ -5,15 +5,25 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Configurações de segurança
-SECRET_KEY = "django-insecure-f*k@=53bc5!shef1-6w+m$-g)kspbaljz%8k4(j7iuc-u2_dyd"
-DEBUG = True
+# SECRET_KEY = "django-insecure-f*k@=53bc5!shef1-6w+m$-g)kspbaljz%8k4(j7iuc-u2_dyd"
+# DEBUG = True
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "ebac-bookstore-api1-9d9b47b419f3.herokuapp.com",
-    "maiconveiga.pythonanywhere.com",
-]
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-#7ajm6gp(#n8_j_yvx$%qd+7$b)+1+ooqgwvr8x+vq(6@al6^n",
+)
+
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
+
+
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "cedric.pythonanywhere.com"]
+
+
+# Application definition
 
 # Definição das aplicações instaladas
 INSTALLED_APPS = [
@@ -54,7 +64,7 @@ ROOT_URLCONF = "bookstore.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "bookstore" / "templates"],
+        "DIRS": [os.path.join(BASE_DIR, "bookstore", "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -109,7 +119,21 @@ STATIC_URL = "/static/"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-# Configurações do Django REST Framework
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
+STATIC_URL = "static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]  # Adjust as needed for your project
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"  # Adjust as needed for your project
+
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 5,
@@ -125,5 +149,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-# Campo de chave primária padrão
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+STATIC_ROOT = BASE_DIR / "staticfiles"

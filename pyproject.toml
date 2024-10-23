@@ -6,6 +6,7 @@ authors = ["Augusto Cedric <cedric.pmi.rmp@gmail.com>"]
 readme = "README.md" 
 
 [tool.poetry.dependencies]
+
 python = ">=3.10,<4.0"  # Definindo a versão do Python suportada
 django = "^5.1.1"
 djangorestframework = "^3.14.0"  # Correto para a versão compatível com Django 5.1
