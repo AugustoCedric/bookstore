@@ -6,7 +6,7 @@ authors = ["Augusto Cedric <cedric.pmi.rmp@gmail.com>"]  # Adicione um espaço p
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.12,<4.0"
+python = ">=3.0,<4.0"
 Django = "^3.2.8"
 psycopg2 = "^2.9"
 psycopg2-binary = "^2.9"
