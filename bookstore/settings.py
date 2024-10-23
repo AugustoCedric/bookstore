@@ -12,23 +12,23 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "django-insecure-#7ajm6gp(#n8_j_yvx$%qd+7$b)+1+ooqgwvr8x+vq(6@al6^n")
+SECRET_KEY = os.getenv(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-#7ajm6gp(#n8_j_yvx$%qd+7$b)+1+ooqgwvr8x+vq(6@al6^n",
+)
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ebac-bookstore-api1-9d9b47b419f3.herokuapp.com', 'maiconveiga.pythonanywhere.com']
-
-
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "cedric.pythonanywhere.com"]
 
 
 # Application definition
@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_extensions",
-
-
     "order",
     "product",
     "rest_framework",
@@ -74,9 +72,7 @@ ROOT_URLCONF = "bookstore.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-
-        'DIRS': [os.path.join(BASE_DIR, 'bookstore', 'templates')],
-
+        "DIRS": [os.path.join(BASE_DIR, "bookstore", "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -97,7 +93,6 @@ WSGI_APPLICATION = "bookstore.wsgi.application"
 
 DATABASES = {
     "default": {
-
         # "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.postgresql"),
         # "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "bookstore_dev_db"),
         "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
@@ -107,7 +102,6 @@ DATABASES = {
         "HOST": os.environ.get("SQL_HOST", "localhost"),
         # "HOST": os.environ.get("SQL_HOST", "db"),
         "PORT": os.environ.get("SQL_PORT", "5432"),
-
     }
 }
 
@@ -149,7 +143,7 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]  # Adjust as needed for your project
 
-MEDIA_URL = '/media/'
+MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"  # Adjust as needed for your project
 
 
@@ -174,6 +168,6 @@ INTERNAL_IPS = [
 ]
 
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / "staticfiles"

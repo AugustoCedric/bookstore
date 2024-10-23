@@ -11,9 +11,6 @@ files = [
     {file = "asgiref-3.4.1.tar.gz", hash = "sha256:4ef1ab46b484e3c706329cedeff284a5d40824200638503f5768edb6de7d58e9"},
 ]
 
-[package.dependencies]
-typing-extensions = {version = "*", markers = "python_version < \"3.8\""}
-
 [package.extras]
 tests = ["mypy (>=0.800)", "pytest", "pytest-asyncio"]
 
@@ -73,17 +70,13 @@ files = [
 
 [[package]]
 name = "django"
-
-version = "5.1.2"
-description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
-
+version = "3.2.25"
+description = "A high-level Python Web framework that encourages rapid development and clean, pragmatic design."
 optional = false
 python-versions = ">=3.6"
 files = [
-
-    {file = "Django-5.1.2-py3-none-any.whl", hash = "sha256:f11aa87ad8d5617171e3f77e1d5d16f004b79a2cf5d2e1d2b97a6a1f8e9ba5ed"},
-    {file = "Django-5.1.2.tar.gz", hash = "sha256:bd7376f90c99f96b643722eee676498706c9fd7dc759f55ebfaf2c08ebcdf4f0"},
-
+    {file = "Django-3.2.25-py3-none-any.whl", hash = "sha256:a52ea7fcf280b16f7b739cec38fa6d3f8953a5456986944c3ca97e79882b4e38"},
+    {file = "Django-3.2.25.tar.gz", hash = "sha256:7ca38a78654aee72378594d63e51636c04b8e28574f5505dff630895b5472777"},
 ]
 
 [package.dependencies]
@@ -96,39 +89,33 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
-
 name = "django-debug-toolbar"
-version = "4.4.6"
+version = "3.8.1"
 description = "A configurable set of panels that display various debug information about the current request/response."
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.7"
 files = [
-    {file = "django_debug_toolbar-4.4.6-py3-none-any.whl", hash = "sha256:3beb671c9ec44ffb817fad2780667f172bd1c067dbcabad6268ce39a81335f45"},
-    {file = "django_debug_toolbar-4.4.6.tar.gz", hash = "sha256:36e421cb908c2f0675e07f9f41e3d1d8618dc386392ec82d23bcfcd5d29c7044"},
+    {file = "django_debug_toolbar-3.8.1-py3-none-any.whl", hash = "sha256:879f8a4672d41621c06a4d322dcffa630fc4df056cada6e417ed01db0e5e0478"},
+    {file = "django_debug_toolbar-3.8.1.tar.gz", hash = "sha256:24ef1a7d44d25e60d7951e378454c6509bf536dce7e7d9d36e7c387db499bc27"},
 ]
 
 [package.dependencies]
-django = ">=4.2.9"
+django = ">=3.2.4"
 sqlparse = ">=0.2"
 
 [[package]]
-
 name = "django-extensions"
 version = "3.2.3"
 description = "Extensions for Django"
 optional = false
 python-versions = ">=3.6"
 files = [
-
-
     {file = "django-extensions-3.2.3.tar.gz", hash = "sha256:44d27919d04e23b3f40231c4ab7af4e61ce832ef46d610cc650d53e68328410a"},
     {file = "django_extensions-3.2.3-py3-none-any.whl", hash = "sha256:9600b7562f79a92cbf1fde6403c04fee314608fefbb595502e34383ae8203401"},
 ]
 
 [package.dependencies]
-Django = ">=2.2"
-
-
+Django = ">=3.2"
 
 [[package]]
 name = "django-rest-framework"
@@ -202,15 +189,11 @@ files = [
 ]
 
 [package.dependencies]
-
-importlib-metadata = {version = "<4.3", markers = "python_version < \"3.8\""}
-
 mccabe = ">=0.6.0,<0.7.0"
 pycodestyle = ">=2.8.0,<2.9.0"
 pyflakes = ">=2.4.0,<2.5.0"
 
 [[package]]
-
 name = "gitdb"
 version = "4.0.10"
 description = "Git Object Database"
@@ -226,65 +209,20 @@ smmap = ">=3.0.1,<6"
 
 [[package]]
 name = "gitpython"
-
 version = "3.1.41"
-
 description = "GitPython is a Python library used to interact with Git repositories"
 optional = false
 python-versions = ">=3.7"
 files = [
-
     {file = "GitPython-3.1.41-py3-none-any.whl", hash = "sha256:c36b6634d069b3f719610175020a9aed919421c87552185b085e04fbbdb10b7c"},
     {file = "GitPython-3.1.41.tar.gz", hash = "sha256:ed66e624884f76df22c8e16066d567aaa5a37d5b5fa19db2c6df6f7156db9048"},
-
 ]
 
 [package.dependencies]
 gitdb = ">=4.0.1,<5"
-typing-extensions = {version = ">=3.7.4.3", markers = "python_version < \"3.8\""}
 
 [package.extras]
-test = ["black", "coverage[toml]", "ddt (>=1.1.1,!=1.4.3)", "mypy", "pre-commit", "pytest", "pytest-cov", "pytest-sugar"]
-
-[[package]]
-name = "gunicorn"
-version = "20.1.0"
-description = "WSGI HTTP Server for UNIX"
-optional = false
-python-versions = ">=3.5"
-files = [
-    {file = "gunicorn-20.1.0-py3-none-any.whl", hash = "sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e"},
-    {file = "gunicorn-20.1.0.tar.gz", hash = "sha256:e0a968b5ba15f8a328fdfd7ab1fcb5af4470c28aaf7e55df02a99bc13138e6e8"},
-]
-
-[package.dependencies]
-setuptools = ">=3.0"
-
-[package.extras]
-eventlet = ["eventlet (>=0.24.1)"]
-gevent = ["gevent (>=1.4.0)"]
-setproctitle = ["setproctitle"]
-tornado = ["tornado (>=0.2)"]
-
-[[package]]
-name = "importlib-metadata"
-version = "4.2.0"
-description = "Read metadata from Python packages"
-optional = false
-python-versions = ">=3.6"
-files = [
-    {file = "importlib_metadata-4.2.0-py3-none-any.whl", hash = "sha256:057e92c15bc8d9e8109738a48db0ccb31b4d9d5cfbee5a8670879a30be66304b"},
-    {file = "importlib_metadata-4.2.0.tar.gz", hash = "sha256:b7e52a1f8dec14a75ea73e0891f3060099ca1d8e6a462a4dff11c3e119ea1b31"},
-]
-
-[package.dependencies]
-typing-extensions = {version = ">=3.6.4", markers = "python_version < \"3.8\""}
-zipp = ">=0.5"
-
-[package.extras]
-
 test = ["black", "coverage[toml]", "ddt (>=1.1.1,!=1.4.3)", "mock", "mypy", "pre-commit", "pytest (>=7.3.1)", "pytest-cov", "pytest-instafail", "pytest-mock", "pytest-sugar", "sumtypes"]
-
 
 [[package]]
 name = "gunicorn"
@@ -311,11 +249,9 @@ tornado = ["tornado (>=0.2)"]
 name = "importlib-metadata"
 version = "4.13.0"
 description = "Read metadata from Python packages"
-
 optional = false
-python-versions = "*"
+python-versions = ">=3.7"
 files = [
-
     {file = "importlib_metadata-4.13.0-py3-none-any.whl", hash = "sha256:8a8a81bcf996e74fee46f0d16bd3eaa382a7eb20fd82445c3ad11f4090334116"},
     {file = "importlib_metadata-4.13.0.tar.gz", hash = "sha256:dd0173e8f150d6815e098fd354f6414b0f079af4644ddfe90c71e2fc6174346d"},
 ]
@@ -391,9 +327,6 @@ files = [
     {file = "pluggy-1.0.0-py2.py3-none-any.whl", hash = "sha256:74134bbf457f031a36d68416e1509f34bd5ccc019f0bcc952c7b909d06b37bd3"},
     {file = "pluggy-1.0.0.tar.gz", hash = "sha256:4224373bacce55f955a878bf9cfa763c1e360858e330072059e10bad68531159"},
 ]
-
-[package.dependencies]
-importlib-metadata = {version = ">=0.12", markers = "python_version < \"3.8\""}
 
 [package.extras]
 dev = ["pre-commit", "tox"]
@@ -503,7 +436,6 @@ files = [
 ]
 
 [[package]]
-
 name = "py"
 version = "1.10.0"
 description = "library with cross-python path, ini-parsing, io, code, log facilities"
@@ -562,7 +494,6 @@ files = [
 atomicwrites = {version = ">=1.0", markers = "sys_platform == \"win32\""}
 attrs = ">=19.2.0"
 colorama = {version = "*", markers = "sys_platform == \"win32\""}
-importlib-metadata = {version = ">=0.12", markers = "python_version < \"3.8\""}
 iniconfig = "*"
 packaging = "*"
 pluggy = ">=0.12,<2.0"
@@ -598,24 +529,6 @@ files = [
 ]
 
 [[package]]
-
-name = "setuptools"
-version = "68.0.0"
-description = "Easily download, build, install, upgrade, and uninstall Python packages"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "setuptools-68.0.0-py3-none-any.whl", hash = "sha256:11e52c67415a381d10d6b462ced9cfb97066179f0e871399e006c4ab101fc85f"},
-    {file = "setuptools-68.0.0.tar.gz", hash = "sha256:baf1fdb41c6da4cd2eae722e135500da913332ab3f2f5c7d33af9b492acb5235"},
-]
-
-[package.extras]
-docs = ["furo", "jaraco.packaging (>=9)", "jaraco.tidelift (>=1.4)", "pygments-github-lexers (==0.0.5)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-favicon", "sphinx-hoverxref (<2)", "sphinx-inline-tabs", "sphinx-lint", "sphinx-notfound-page (==0.8.3)", "sphinx-reredirects", "sphinxcontrib-towncrier"]
-testing = ["build[virtualenv]", "filelock (>=3.4.0)", "flake8-2020", "ini2toml[lite] (>=0.9)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "pip (>=19.1)", "pip-run (>=8.8)", "pytest (>=6)", "pytest-black (>=0.3.7)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=1.3)", "pytest-mypy (>=0.9.1)", "pytest-perf", "pytest-ruff", "pytest-timeout", "pytest-xdist", "tomli-w (>=1.0.0)", "virtualenv (>=13.0.0)", "wheel"]
-testing-integration = ["build[virtualenv]", "filelock (>=3.4.0)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "pytest", "pytest-enabler", "pytest-xdist", "tomli", "virtualenv (>=13.0.0)", "wheel"]
-
-[[package]]
-
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
@@ -671,30 +584,18 @@ files = [
 ]
 
 [[package]]
-name = "typing-extensions"
-version = "3.10.0.2"
-description = "Backported and Experimental Type Hints for Python 3.5+"
-optional = false
-python-versions = "*"
-files = [
-    {file = "typing_extensions-3.10.0.2-py2-none-any.whl", hash = "sha256:d8226d10bc02a29bcc81df19a26e56a9647f8b0a6d4a83924139f4a8b01f17b7"},
-    {file = "typing_extensions-3.10.0.2-py3-none-any.whl", hash = "sha256:f1d25edafde516b146ecd0613dabcc61409817af4766fbbcfb8d1ad4ec441a34"},
-    {file = "typing_extensions-3.10.0.2.tar.gz", hash = "sha256:49f75d16ff11f1cd258e1b988ccff82a3ca5570217d7ad8c5f48205dd99a677e"},
-]
-
-[[package]]
 name = "whitenoise"
-version = "5.3.0"
+version = "6.7.0"
 description = "Radically simplified static file serving for WSGI applications"
 optional = false
-python-versions = ">=3.5, <4"
+python-versions = ">=3.8"
 files = [
-    {file = "whitenoise-5.3.0-py2.py3-none-any.whl", hash = "sha256:d963ef25639d1417e8a247be36e6aedd8c7c6f0a08adcb5a89146980a96b577c"},
-    {file = "whitenoise-5.3.0.tar.gz", hash = "sha256:d234b871b52271ae7ed6d9da47ffe857c76568f11dd30e28e18c5869dbd11e12"},
+    {file = "whitenoise-6.7.0-py3-none-any.whl", hash = "sha256:a1ae85e01fdc9815d12fa33f17765bc132ed2c54fa76daf9e39e879dd93566f6"},
+    {file = "whitenoise-6.7.0.tar.gz", hash = "sha256:58c7a6cd811e275a6c91af22e96e87da0b1109e9a53bb7464116ef4c963bf636"},
 ]
 
 [package.extras]
-brotli = ["Brotli"]
+brotli = ["brotli"]
 
 [[package]]
 name = "zipp"
@@ -715,14 +616,7 @@ enabler = ["pytest-enabler (>=2.2)"]
 test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", "jaraco.test", "more-itertools", "pytest (>=6,!=8.1.*)", "pytest-ignore-flaky"]
 type = ["pytest-mypy"]
 
-
-
 [metadata]
 lock-version = "2.0"
-
-python-versions = "^3.12"
-
-
-content-hash = "9a145a59a49a4c8587c17ec9a8fb64d73ae5d3e84e3c4f5f6b9c8f102d07c9ba"
-
-
+python-versions = ">=3.8,<4.0"
+content-hash = "6fea257228583e77ba9958d9c0b4c6e47c7b6d279a2d4f137398bb08f41d53d4"
