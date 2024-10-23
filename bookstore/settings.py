@@ -5,10 +5,10 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Configurações de segurança
-SECRET_KEY = "django-insecure-f*k@=53bc5!shef1-6w+m$-g)kspbaljz%8k4(j7iuc-u2_dyd"
-DEBUG = True
+# SECRET_KEY = "django-insecure-f*k@=53bc5!shef1-6w+m$-g)kspbaljz%8k4(j7iuc-u2_dyd"
+# DEBUG = True
 
-<<<<<<< HEAD
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv(
     "DJANGO_SECRET_KEY",
@@ -24,14 +24,6 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", "cedric.pythonanywhere.com"]
 
 
 # Application definition
-=======
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "ebac-bookstore-api1-9d9b47b419f3.herokuapp.com",
-    "maiconveiga.pythonanywhere.com",
-]
->>>>>>> 5a21c122a215ffb873d38452e1041eb422095765
 
 # Definição das aplicações instaladas
 INSTALLED_APPS = [
@@ -72,11 +64,7 @@ ROOT_URLCONF = "bookstore.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-<<<<<<< HEAD
         "DIRS": [os.path.join(BASE_DIR, "bookstore", "templates")],
-=======
-        "DIRS": [BASE_DIR / "bookstore" / "templates"],
->>>>>>> 5a21c122a215ffb873d38452e1041eb422095765
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -94,11 +82,6 @@ WSGI_APPLICATION = "bookstore.wsgi.application"
 # Configurações do banco de dados
 DATABASES = {
     "default": {
-<<<<<<< HEAD
-        # "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.postgresql"),
-        # "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "bookstore_dev_db"),
-=======
->>>>>>> 5a21c122a215ffb873d38452e1041eb422095765
         "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
         "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.sqlite3"),
         "USER": os.environ.get("SQL_USER", "bookstore_dev"),
@@ -136,7 +119,7 @@ STATIC_URL = "/static/"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-<<<<<<< HEAD
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_URL = "static/"
@@ -151,10 +134,6 @@ MEDIA_ROOT = BASE_DIR / "media"  # Adjust as needed for your project
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
-=======
-# Configurações do Django REST Framework
->>>>>>> 5a21c122a215ffb873d38452e1041eb422095765
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 5,
@@ -170,12 +149,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-<<<<<<< HEAD
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
-=======
-# Campo de chave primária padrão
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
->>>>>>> 5a21c122a215ffb873d38452e1041eb422095765
