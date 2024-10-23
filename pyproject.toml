@@ -1,11 +1,12 @@
 [tool.poetry]
 name = "bookstore"
 version = "0.1.0"
-description = "Bookstore API"
-authors = ["Daniel Santos <drsantos20@gmail.com>"]
-
+description = "API de Livraria"
+authors = ["Augusto Cedric <cedric.pmi.rmp@gmail.com>"]  # Adicione um espaço para melhor legibilidade
+readme = "README.md"
 
 [tool.poetry.dependencies]
+<<<<<<< HEAD
 python = ">=3.8,<4.0"
 Django = "^3.2.8"
 psycopg2 = "^2.9"
@@ -20,11 +21,21 @@ whitenoise = "^6.7.0"
 gitpython = "3.1.41"
 flake8 = "<5.0"
 importlib-metadata = "<5.0"
+=======
+python = "^3.12"
+django = "^5.1.1"
+djangorestframework = "^3.14.0"  # Correto para a versão compatível com Django 5.1
+psycopg2-binary = "^2.9.10"
+django-extensions = "^3.2"
+django-debug-toolbar = "^4.0"
+gitpython = "^3.1.30"
+whitenoise = "^6.2"  # ou a versão desejada
+requests = "^2.32.3"
+>>>>>>> 5a21c122a215ffb873d38452e1041eb422095765
 
-
-[tool.poetry.dev-dependencies]
-pytest = "^6.2.5"
-factory-boy = "^3.2.0"
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+factory_boy = "^3.3.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

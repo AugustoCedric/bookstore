@@ -32,7 +32,6 @@ COLOR_ORANGE = \033[33m
 COLOR_RESET = \033[0m
 
 ##@ Utility
-
 .PHONY: help
 help:  ## Display this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m\033[0m\n"} /^[a-zA-Z0-9_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
@@ -42,7 +41,6 @@ version-python: ## Echos the version of Python in use
 	@echo $(PYTHON_VERSION)
 
 ##@ Testing
-
 .PHONY: test
 test: ## Runs tests
 	$(RUN_PYPKG_BIN) pytest \
@@ -50,7 +48,6 @@ test: ## Runs tests
 		tests/*.py
 
 ##@ Building and Publishing
-
 .PHONY: build
 build: ## Runs a build
 	$(POETRY) build
@@ -64,7 +61,6 @@ deps-py-update: pyproject.toml ## Update Poetry deps, e.g. after adding a new on
 	$(POETRY) update
 
 ##@ Setup
-# dynamic-ish detection of Python installation directory with pyenv
 $(PYENV_VERSION_DIR):
 	pyenv install --skip-existing $(PYTHON_VERSION)
 $(PYTHON_VERSION_FILE): $(PYENV_VERSION_DIR)
@@ -81,16 +77,12 @@ deps-brew: Brewfile ## Installs development dependencies from Homebrew
 
 .PHONY: deps-py
 deps-py: $(PYTHON_VERSION_FILE) ## Installs Python development and runtime dependencies
-	$(PIP) install --upgrade \
-		--index-url $(PYPI_PROXY) \
-		pip
-	$(PIP) install --upgrade \
-                                     		--index-url $(PYPI_PROXY) \
-                                     		poetry
+<<<<<<< HEAD
+	$(PIP) install --upgrade --index-url $(PYPI_PROXY) pip
+	$(PIP) install --upgrade --index-url $(PYPI_PROXY) poetry
 	$(POETRY) install
 
 ##@ Code Quality
-
 .PHONY: check
 check: check-py ## Runs linters and other important tools
 
@@ -122,6 +114,22 @@ format-isort:
 	$(RUN_PYPKG_BIN) isort --recursive .
 
 .PHONY: migrate
+<<<<<<< HEAD
+migrate: ## Run migrations
+	docker-compose exec web python manage.py migrate --noinput
+
+.PHONY: seed
+seed: ## Seed the database
+	docker-compose exec web python manage.py seed
+
+.PHONY: run
+run: ## Run the Django development server
+	docker-compose up --build web
+
+.PHONY: stop
+stop: ## Stop all running services
+	docker-compose down
+=======
 migrate:
 	docker-compose exec web python manage.py migrate --noinput
 
