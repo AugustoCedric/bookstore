@@ -1,3 +1,5 @@
+version: '3.9'
+
 services:
   db:
     image: postgres:13.0-alpine
@@ -15,7 +17,7 @@ services:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/app # Mapeie o diretório onde manage.py está localizado
+      - app_data:/usr/src/app/
     ports:
       - 8000:8000
     env_file:
@@ -30,3 +32,4 @@ networks:
 volumes:
   postgres_data:
   app_data:
+
