@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
     "cedric.pythonanywhere.com",
 ]
 
-
+# teste
 # Application definition
 
 INSTALLED_APPS = [
