@@ -1,5 +1,5 @@
 # `python-base` sets up all our shared environment variables
-FROM python:3.12.1-slim as python-base
+FROM python:3.11-slim as python-base
 
     # python
 ENV PYTHONUNBUFFERED=1 \
@@ -13,15 +13,19 @@ ENV PYTHONUNBUFFERED=1 \
     \
     # poetry
     # https://python-poetry.org/docs/configuration/#using-environment-variables
-    # POETRY_VERSION=1.0.3 \--------------
+    POETRY_VERSION=1.0.3 \
+
     # make poetry install to this location
     POETRY_HOME="/opt/poetry" \
+
     # make poetry create the virtual environment in the project's root
     # it gets named `.venv`
     POETRY_VIRTUALENVS_IN_PROJECT=true \
+
     # do not ask any interactive question
     POETRY_NO_INTERACTION=1 \
     \
+
     # paths
     # this is where our requirements + virtual environment will live
     PYSETUP_PATH="/opt/pysetup" \
@@ -36,13 +40,10 @@ RUN apt-get update \
         # deps for installing poetry
         curl \
         # deps for building python deps
-        build-essential \
-        # Install git extensions
-        git
+        build-essential
 
 # install poetry - respects $POETRY_VERSION & $POETRY_HOME
-RUN pip install poetry 
-RUN poetry init
+RUN pip install poetry poetry init
 
 # install postgres dependencies inside of Docker
 RUN apt-get update \
