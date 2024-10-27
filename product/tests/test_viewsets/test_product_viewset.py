@@ -9,6 +9,7 @@ from order.factories import UserFactory
 from product.factories import CategoryFactory, ProductFactory
 from product.models import Product
 
+
 class TestProductViewSet(APITestCase):
     client = APIClient()
 
@@ -23,6 +24,7 @@ class TestProductViewSet(APITestCase):
         )
     
     def test_get_all_product(self):
+
         token = Token.objects.get(user__username=self.user.username)
         self.client.credentials(HTTP_AUTHORIZATION="Token " + token.key)
         response = self.client.get(
@@ -34,6 +36,7 @@ class TestProductViewSet(APITestCase):
 
         self.assertEqual(product_data["results"][0]['title'], self.product.title)
         self.assertEqual(product_data["results"][0]['price'], self.product.price)
+
         self.assertEqual(product_data["results"][0]["active"], self.product.active)
 
     def test_create_product(self):

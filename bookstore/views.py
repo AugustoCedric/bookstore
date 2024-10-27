@@ -13,6 +13,7 @@ def update(request):
         Here the name of my directory is "test.pythonanywhere.com"
         """
         repo = git.Repo("/home/cedric/bookstore")
+
         origin = repo.remotes.origin
 
         origin.pull()
