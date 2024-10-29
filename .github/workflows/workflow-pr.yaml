@@ -3,11 +3,11 @@ on: [pull_request]
 jobs:
   qa:
     name: Quality check
-    runs-on: ubuntu-20.04 # ou 'ubuntu-latest'
+    runs-on: ubuntu-20.04 # Substituído por 'ubuntu-20.04' ou 'ubuntu-latest'
     steps:
       - uses: actions/checkout@v1
       - name: Set up Python
-        uses: actions/setup-python@master
+        uses: actions/setup-python@v2
         with:
           python-version: 3.8
       - name: Install poetry
@@ -28,7 +28,7 @@ jobs:
       - name: Test
         run: |
           poetry run python manage.py test
-      - name: Wemake Python Stylguide
+      - name: Wemake Python Styleguide
         uses: wemake-services/wemake-python-styleguide@0.16.0
         continue-on-error: true
         with:
