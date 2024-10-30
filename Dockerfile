@@ -51,6 +51,8 @@ COPY poetry.lock pyproject.toml ./
 
 # install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
 RUN poetry install --no-dev
+RUN pip install --no-cache-dir poetry
+
 
 # quicker install as runtime deps are already installed
 RUN poetry install
