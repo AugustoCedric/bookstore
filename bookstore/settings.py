@@ -29,6 +29,8 @@ DEBUG = True
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "cedric.pythonanywhere.com"]
 
 
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "cedric.pythonanywhere.com"]
+
 # Application definition
 
 INSTALLED_APPS = [
