@@ -1,5 +1,5 @@
 # `python-base` sets up all our shared environment variables
-FROM python:3.12.1-slim as python-base
+FROM python:3.8.1-slim as python-base
 
     # python
 ENV PYTHONUNBUFFERED=1 \
@@ -13,7 +13,7 @@ ENV PYTHONUNBUFFERED=1 \
     \
     # poetry
     # https://python-poetry.org/docs/configuration/#using-environment-variables
-    # POETRY_VERSION=1.0.3 \--------------
+    POETRY_VERSION=1.0.3 \
     # make poetry install to this location
     POETRY_HOME="/opt/poetry" \
     # make poetry create the virtual environment in the project's root
@@ -36,15 +36,11 @@ RUN apt-get update \
         # deps for installing poetry
         curl \
         # deps for building python deps
-        build-essential \
-        # Install git extensions
-        git
+        build-essential
 
 # install poetry - respects $POETRY_VERSION & $POETRY_HOME
-RUN pip install poetry 
-RUN poetry init
+RUN curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
 
-# install postgres dependencies inside of Docker
 RUN apt-get update \
     && apt-get -y install libpq-dev gcc \
     && pip install psycopg2
@@ -55,6 +51,8 @@ COPY poetry.lock pyproject.toml ./
 
 # install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
 RUN poetry install --no-dev
+RUN pip install --no-cache-dir poetry
+
 
 # quicker install as runtime deps are already installed
 RUN poetry install
@@ -66,3 +64,4 @@ COPY . /app/
 EXPOSE 8000
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+

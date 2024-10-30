@@ -28,7 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "cedric.pythonanywhere.com"]
 
-# teste
+
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "cedric.pythonanywhere.com"]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -84,14 +86,11 @@ WSGI_APPLICATION = "bookstore.wsgi.application"
 
 DATABASES = {
     "default": {
-        # "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.postgresql"),
-        # "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "bookstore_dev_db"),
         "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
-        "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "sqlite3"),
-        "USER": os.environ.get("SQL_USER", "bookstore_dev"),
-        "PASSWORD": os.environ.get("SQL_PASSWORD", "bookstore_dev"),
+        "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.sqlite3"),
+        "USER": os.environ.get("SQL_USER", "user"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
         "HOST": os.environ.get("SQL_HOST", "localhost"),
-        # "HOST": os.environ.get("SQL_HOST", "db"),
         "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
@@ -118,9 +117,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = "pt-br"
-#
-TIME_ZONE = "America/Sao_Paulo"
+LANGUAGE_CODE = "en-us"
+
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
