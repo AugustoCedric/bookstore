@@ -1,10 +1,8 @@
 name: Push Container to Heroku
-
 on:
   push:
     branches:
-      - 'main'
-
+      - "main"
 jobs:
   heroku-deploy:
     runs-on: ubuntu-latest
@@ -17,7 +15,6 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
-
   custom-deploy:
     needs: heroku-deploy
     runs-on: ubuntu-latest
